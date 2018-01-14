@@ -1,0 +1,42 @@
+<div class = "container">
+  <div class="wrapper">
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-signin'}) do |f| %>
+      <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+      <hr class="colorgraph">
+      <% if alert || notice %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      <%end%>  
+      <div class="field">
+        <%= f.label :email %><br>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %><br>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end -%>
+
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <div class="forgot-password">
+          <%= link_to "Forgot your password?", new_password_path(resource_name)%>
+        </div>  
+      <% end -%>
+
+      <div class="actions">
+        <%= f.submit "Log in", class:"btn btn-lg btn-primary btn-block btn-submit" %>
+      </div>
+      <%= render "devise/shared/links" %>
+  
+<% end %>
+</div>
+</div>
+

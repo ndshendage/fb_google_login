@@ -1,0 +1,18 @@
+<div class="container">
+  <table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+    	<th class="text-center" colspan="2"> Details of Category</th>
+    </tr>
+    <tr>
+      <th class="text-center">Category Name</th>
+      <td class="text-center"><%= @category.name %></th>
+    </tr>
+    <tr>
+      <th class="text-center">Book Names</th>
+      <td class="text-center"><%= get_books_name(@category) %></th>
+    </tr>
+    <td class="text-center" colspan="2"> <%= link_to 'Edit', edit_book_path(@category) %> |
+<%= link_to 'Back', books_path %> </td>
+  </thead>
+</table>

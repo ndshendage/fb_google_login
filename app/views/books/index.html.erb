@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="well top-well">
+    <h3 class="text-center">List of Books</h3>
+    <div class="search-add">
+      <%= form_tag(search_result_books_path, method: 'get') do %>
+        <%= text_field_tag :criteria, params[:criteria], placeholder: 'Enter book name to search', class: 'search-box', required: true%>
+        <%= select_tag :column, "<option value=''>Select Column</option><option value='author_name'>Author Name</option><option value='name'>Book Name</option><option value='price'>Price</option><option value='published_date'>Published Date</option>".html_safe, class: 'column-criteria-box', required: true%>
+        <%= submit_tag 'Search', name: nil, class: 'search-btn btn btn-success'%>
+      <% end%>
+
+      <%= form_tag(sorted_books_path, method: 'get') do %>
+        <%= select_tag :column, "<option value=''>Select Column</option><option value='name'>Name</option>".html_safe, class: 'criteria-box', required: true%>
+        <%= select_tag :order, "<option value='asc'>Order Asc</option><option value='desc'>Order Desc</option>".html_safe, class: 'criteria-box'%>
+        <%= submit_tag 'Sort', name: nil, class: 'search-btn btn btn-success', style: 'margin-top: 0px;'%>
+      <% end%>
+      <%= link_to 'Add New Book', new_book_path, class: 'btn btn-success pull-right' %>
+    </div>
+  </div>
+<div>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th class="text-center">Book Name</th>
+      <th class="text-center">Category Names</th>
+      <th class="text-center" colspan="3">Actions</th> 
+    </tr>
+  </thead>
+
+  <tbody >
+    <% if @books.present? %>
+      <%= render 'index'%>
+    <% else%>
+      <tr>
+        <td colspan="5"> No book record found</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+</div>
+</div>

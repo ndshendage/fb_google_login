@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="well top-well">
+    <h3 class="text-center">List of Categories</h3>
+    <div class="search-add">
+      <%= form_tag(categories_path, method: 'get') do %>
+        <%= text_field_tag :criteria, params[:criteria], placeholder: 'Enter category name to search', class: 'search-box'%>
+        <%= submit_tag 'Search', name: nil, class: 'search-btn btn btn-success'%>
+      <% end%>
+
+      <%= form_tag(sorted_categories_path, method: 'get') do %>
+        <%= select_tag :column, "<option value=''>Select Column</option><option value='name'>name</option>".html_safe, class: 'criteria-box', required: true%>
+        <%= select_tag :order, "<option value='asc'>Order Asc</option><option value='desc'>Order Desc</option>".html_safe, class: 'criteria-box'%>
+        <%= submit_tag 'Sort', name: nil, class: 'search-btn btn btn-success', style: 'margin-top: 0px;'%>
+      <% end%>
+
+      <%= link_to 'Add New Category', new_category_path, class: 'btn btn-success pull-right' %>
+    </div>
+  </div>
+<div>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th class="text-center">Category Name</th>
+      <th class="text-center">Book Names</th>
+      <th class="text-center" colspan="3">Actions</th> 
+    </tr>
+  </thead>
+
+  <tbody >
+    <% if @categories.present? %>
+      <%= render 'index'%>
+    <% else%>
+      <tr>
+        <td colspan="5"> No category record found</td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<br>
+</div>
+</div>

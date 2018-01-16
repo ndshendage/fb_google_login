@@ -38,7 +38,7 @@
 
     <div class="field">
       <%= hidden_field_tag 'book[category_ids][]', nil%>
-      <label>Select Category of you book</label><br>
+      <label>Select Category of this book: </label><br>
       <% @categories.each do |cat| %>
       <%= check_box_tag 'book[category_ids][]', cat.id, @book.categories.include?(cat)%>
       <%= cat.name%><br>

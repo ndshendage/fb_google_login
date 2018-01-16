@@ -16,10 +16,12 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
+    @books = Book.all.order('name asc')
   end
 
   # GET /categories/1/edit
   def edit
+    @books = Book.all.order('name asc')
   end
 
   # POST /categories
@@ -32,6 +34,7 @@ class CategoriesController < ApplicationController
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
+        @books = Book.all.order('name asc')
         format.html { render :new }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
@@ -46,6 +49,7 @@ class CategoriesController < ApplicationController
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
       else
+        @books = Book.all.order('name asc')
         format.html { render :edit }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end

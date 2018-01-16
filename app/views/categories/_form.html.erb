@@ -1,30 +1,31 @@
 <%= form_for(category) do |f| %>
   <% if category.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+      <% category.errors.full_messages.join(', ')%>
 
-      <ul>
-      <% category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <label>Select Category of you book</label>
-      <% Book.all.each do |cat| %>
-      <%= check_box_tag 'category[book_ids][]', cat.id%>
-      <%= cat.name%><br>
-      <%end%>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
   </div>
 
+  <div class="field">
+      <%= hidden_field_tag 'category[book_ids][]', nil%>
+      <label>Select Book for this category </label><br>
+      <% @books.each do |book| %>
+      <%= check_box_tag 'category[book_ids][]', book.id, @category.books.include?(book)%>
+      <%= book.name%><br>
+      <%end%>
+    </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-success btn sm'%>
   </div>
 <% end %>

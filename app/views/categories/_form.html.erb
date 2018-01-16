@@ -1,31 +1,41 @@
-<%= form_for(category) do |f| %>
-  <% if category.errors.any? %>
-    <div id="error_explanation">
-      <% category.errors.full_messages.join(', ')%>
+<div class="container">
+  <%= form_for(category) do |f| %>
+    <% if category.errors.any? %>
+      <div id="error_explanation">
+        <%= category.errors.full_messages.join(', ')%>
+      </div>
+    <% end %>
 
+    <div class="field required">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, required: true %>
+    </div>
+
+    <div class="field required">
+      <%= f.label :description %><br>
+      <%= f.text_area :description, required: true %>
+    </div>
+
+    <div class="field">
+        <%= hidden_field_tag 'category[book_ids][]', nil%>
+        <label>Select Book for this category </label><br>
+        <% @books.each do |book| %>
+        <%= check_box_tag 'category[book_ids][]', book.id, @category.books.include?(book)%>
+        <%= book.name%><br>
+        <%end%>
+      </div>
+
+    <div class="actions">
+      <%= f.submit class: 'btn btn-success btn sm'%>
     </div>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="field">
-      <%= hidden_field_tag 'category[book_ids][]', nil%>
-      <label>Select Book for this category </label><br>
-      <% @books.each do |book| %>
-      <%= check_box_tag 'category[book_ids][]', book.id, @category.books.include?(book)%>
-      <%= book.name%><br>
-      <%end%>
-    </div>
-
-  <div class="actions">
-    <%= f.submit class: 'btn btn-success btn sm'%>
-  </div>
-<% end %>
+<!-- js to remove extra br on invalid fields -->
+<%- if controller.action_name.eql?('create') || controller.action_name.eql?('update')%>
+  <script>
+    $(document).ready(function(){
+      $('.field_with_errors').closest('.field').find('br').remove();
+    });    
+  </script>
+<% end%>  

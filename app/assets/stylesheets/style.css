@@ -155,3 +155,15 @@ input::-webkit-input-placeholder {
 .field_with_errors{
   color: red;
 }
+.field.required label:after {
+  content:"*";
+  color:red;
+  font-size: 20px;
+  padding-left: 1px;
+}
+.sign-in-user{
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 10px;
+  padding-left: 10px;
+}

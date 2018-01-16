@@ -1,12 +1,15 @@
+<% sr_no = 0 %>
 <% @books.each do |book| %>
+  <% sr_no += 1%>
   <tr>
+    <td class="text-center table-data"><%= sr_no %></td>
     <td class="text-center table-data"><%= book.name %></td>
     <td class="text-center table-data"><%= book.author_name %></td>
     <td class="text-center table-data"><%= book.edition %></td>
     <td class="text-center table-data"><%= get_category_names(book) %></td>
     <td class="text-center table-data"><%= book.price %></td>
     <td class="text-center"><%= link_to "Edit", edit_book_path(book), class: "btn btn-default" %></td>
-    <td class="text-center"><%= link_to 'Show', book, class: "btn btn-info" %></td>
+    <td class="text-center"><%= link_to 'Details', book, class: "btn btn-info" %></td>
     <td class="text-center"><%= link_to "Delete", book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
   </tr>
 <% end %>

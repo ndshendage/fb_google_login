@@ -1,9 +1,13 @@
+<% sr_no = 0%>
 <% @categories.each do |category| %>
+  <% sr_no += 1%>
   <tr>
+    <td class="text-center table-data"><%= sr_no %></td>
     <td class="text-center table-data"><%= category.name %></td>
     <td class="text-center table-data"><%= get_books_name(category) %></td>
+    <td class="text-center table-data"><%= category.description %></td>
     <td class="text-center"><%= link_to "Edit", edit_category_path(category), class: "btn btn-default" %></td>
-    <td class="text-center"><%= link_to 'Show', category, class: "btn btn-info" %></td>
+    <td class="text-center"><%= link_to 'Details', category, class: "btn btn-info" %></td>
     <td class="text-center"><%= link_to "Delete", category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
   </tr>
 <% end %>

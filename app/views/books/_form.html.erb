@@ -6,34 +6,34 @@
       </div>
     <% end %>
 
-     <div class="field">
+     <div class="field required">
       <%= f.label :name %><br>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, required: true %>
     </div>
 
-    <div class="field">
+    <div class="field required">
       <%= f.label :description %><br>
-      <%= f.text_area :description %>
+      <%= f.text_area :description, required: true %>
     </div>
 
-    <div class="field">
+    <div class="field required">
       <%= f.label :author_name %><br>
-      <%= f.text_field :author_name %>
+      <%= f.text_field :author_name, required: true %>
     </div>
 
     <div class="field">
       <%= f.label :edition %><br>
-      <%= f.number_field :edition, step: :any %>
+      <%= f.text_field :edition %>
     </div>
 
-    <div class="field">
+    <div class="field required">
       <%= f.label :price %><br>
-      <%= f.number_field :price, step: :any %>
+      <%= f.number_field :price, step: :any, required: true %>
     </div>
 
     <div class="field date-select">
       <%= f.label :published_date %><br>
-      <%= f.date_select :published_date %>
+      <%= f.date_select :published_date, order: [:day, :month, :year] %>
     </div>
 
     <div class="field">
@@ -49,4 +49,13 @@
       <%= f.submit class: 'btn btn-success' %>
     </div>
   <% end %>
-</div>  
+</div>
+
+<!-- js to remove extra br on invalid fields -->
+<%- if controller.action_name.eql?('create') || controller.action_name.eql?('update')%>
+  <script>
+    $(document).ready(function(){
+      $('.field_with_errors').closest('.field').find('br').remove();
+    });    
+  </script>
+<% end%>    

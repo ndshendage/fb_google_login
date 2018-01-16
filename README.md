@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+This app conssist of login via devise, facebook and google gmail account and searching sorting logic for model and many to many assosiation is covered.
 
 * Ruby version
+  ruby version > 2.2.0
 
 * System dependencies
+  rails > 5.0.5
 
 * Configuration
 
 * Database creation
+  rake db:create
+  rake db:migrate
 
 * Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  rake db:seed

@@ -1,0 +1,41 @@
+book:
+  one:
+    name: 'Ruby Codebook'
+    author_name: 'Leonard-Richardson'
+    edition: '4'
+    price: 1000
+    publication: 'O’Reilly Media, Inc.'
+    description: 'This is Ruby book for begginners and really useful'
+    category_ids: [1]
+  two:
+    name: 'Agile Web Development with rails 4'
+    author_name: 'Dave Thomas '
+    edition: '5'
+    price: 700
+    publication: 'The Pragmatic Bookshelf'
+    description: 'This is Ruby on Rails book for begginners and really useful'
+    category_ids: [2]
+  three:
+    name: 'Jquery Codebook'
+    author_name: 'jQuery Community Experts'
+    edition: '4'
+    price: 800
+    publication: 'O’Reilly Media, Inc.'
+    description: 'This is JQuery book for begginners and really useful'
+    category_ids: [3]
+  four:
+    name: 'Brilliant HTML & CSS'
+    author_name: 'James A. Brannan'
+    edition: '6'
+    price: 500
+    publication: 'Pearson Education Limited'
+    description: 'This is HTML and CSS book for begginners and really useful'
+    category_ids: [4, 5]
+  five:
+    name: 'CSS3:  Missing Manual'
+    author_name: 'David Sawyer McFarland'
+    edition: '5'
+    price: 450
+    publication: 'O’Reilly Media, Inc.'
+    description: 'This is only CSS book for begginners and really useful'
+    category_ids: [5]

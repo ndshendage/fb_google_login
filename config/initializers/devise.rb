@@ -17,7 +17,7 @@ Devise.setup do |config|
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  # config.mailer = 'Devise::Mailer''config.secret_key = '3eabc00a70f43409a6770d1a57d6b3d544ebb4673acae1fb3fc6f2b481ce289bca69b12125cc51a77c8e530ab64448184169a9da37426da049a2c4e484af9836'
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
